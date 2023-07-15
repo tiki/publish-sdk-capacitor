@@ -8,11 +8,8 @@ import com.getcapacitor.annotation.CapacitorPlugin
 
 @CapacitorPlugin(name = "TikiSdk")
 class TikiSdkPlugin : Plugin() {
+    private val trail: Trail = Trail()
+
     @PluginMethod
-    fun echo(call: PluginCall) {
-        val value = call.getString("value")
-        val ret = JSObject()
-        ret.put("value", value)
-        call.resolve(ret)
-    }
+    fun createLicense(call: PluginCall) = trail.license.echo(call)
 }

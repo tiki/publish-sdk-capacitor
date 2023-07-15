@@ -13,17 +13,17 @@ npx cap sync
 
 <docgen-index>
 
-* [`echo(...)`](#echo)
+* [`createLicense(...)`](#createlicense)
 
 </docgen-index>
 
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
 
-### echo(...)
+### createLicense(...)
 
 ```typescript
-echo(options: { value: string; }) => Promise<{ value: string; }>
+createLicense(options: { value: string; }) => Promise<{ value: string; }>
 ```
 
 | Param         | Type                            |

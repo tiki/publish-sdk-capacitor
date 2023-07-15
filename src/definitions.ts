@@ -1,3 +1,3 @@
 export interface TikiSdkPlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
+  createLicense(options: { value: string }): Promise<{ value: string }>;
 }
