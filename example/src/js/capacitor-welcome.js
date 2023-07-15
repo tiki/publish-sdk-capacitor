@@ -1,5 +1,6 @@
 import { Camera } from '@capacitor/camera';
 import { SplashScreen } from '@capacitor/splash-screen';
+import { TikiSdk } from "@mytiki/tiki-sdk-capacitor";
 
 window.customElements.define(
   'capacitor-welcome',
@@ -91,9 +92,11 @@ window.customElements.define(
 
     connectedCallback() {
       const self = this;
-
       self.shadowRoot.querySelector('#take-photo').addEventListener('click', async function (e) {
-        try {
+          const rsp = await TikiSdk.echo({value: "hm"})
+          console.log(rsp.value)
+
+          try {
           const photo = await Camera.getPhoto({
             resultType: 'uri',
           });
