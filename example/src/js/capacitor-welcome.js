@@ -1,5 +1,7 @@
 import { Camera } from '@capacitor/camera';
 import { SplashScreen } from '@capacitor/splash-screen';
+import { Tiki } from '@mytiki/tiki-sdk-capacitor';
+
 
 window.customElements.define(
   'capacitor-welcome',
@@ -61,7 +63,7 @@ window.customElements.define(
       </capacitor-welcome-titlebar>
       <main>
         <p>
-          Capacitor makes it easy to build powerful apps for the app stores, mobile web (Progressive Web Apps), and desktop, all
+          Nerd. Capacitor makes it easy to build powerful apps for the app stores, mobile web (Progressive Web Apps), and desktop, all
           with a single code base.
         </p>
         <h2>Getting Started</h2>
@@ -79,7 +81,7 @@ window.customElements.define(
           This demo shows how to call Capacitor plugins. Say cheese!
         </p>
         <p>
-          <button class="button" id="take-photo">Take Photo</button>
+          <button class="button" id="take-photo">count</button>
         </p>
         <p>
           <img id="image" style="max-width: 100%">
@@ -91,22 +93,27 @@ window.customElements.define(
 
     connectedCallback() {
       const self = this;
+      let val = 0;
 
       self.shadowRoot.querySelector('#take-photo').addEventListener('click', async function (e) {
-        try {
-          const photo = await Camera.getPhoto({
-            resultType: 'uri',
-          });
+          const rsp = await Tiki.echo({value: parseInt(val)})
+          console.log(`rsp is: ${rsp.value}`)
+          val = rsp.value
 
-          const image = self.shadowRoot.querySelector('#image');
-          if (!image) {
-            return;
-          }
-
-          image.src = photo.webPath;
-        } catch (e) {
-          console.warn('User cancelled', e);
-        }
+        // try {
+        //   const photo = await Camera.getPhoto({
+        //     resultType: 'uri',
+        //   });
+        //
+        //   const image = self.shadowRoot.querySelector('#image');
+        //   if (!image) {
+        //     return;
+        //   }
+        //
+        //   image.src = photo.webPath;
+        // } catch (e) {
+        //   console.warn('User cancelled', e);
+        // }
       });
     }
   }

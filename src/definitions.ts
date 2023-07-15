@@ -1,3 +1,4 @@
-export interface TikiSdkPlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
+export interface TikiSdk {
+  echo(options: { value: number }): Promise<{ value: number }>;
 }
+

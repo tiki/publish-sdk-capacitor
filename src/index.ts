@@ -1,10 +1,10 @@
 import { registerPlugin } from '@capacitor/core';
 
-import type { TikiSdkPlugin } from './definitions';
+import type { TikiSdk } from './definitions';
 
-const TikiSdk = registerPlugin<TikiSdkPlugin>('TikiSdk', {
+const Tiki = registerPlugin<TikiSdk>('TikiSdk', {
   web: () => import('./web').then(m => new m.TikiSdkWeb()),
 });
 
 export * from './definitions';
-export { TikiSdk };
+export { Tiki };

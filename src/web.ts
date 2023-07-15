@@ -1,12 +1,10 @@
 import { WebPlugin } from '@capacitor/core';
 
-import type { TikiSdkPlugin } from './definitions';
+import type { TikiSdk } from './definitions';
 
-export class TikiSdkWeb extends WebPlugin implements TikiSdkPlugin {
-  async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO', options);
-    return options;
-  }
+export class TikiSdkWeb extends WebPlugin implements TikiSdk {
+    echo(_: { value: number }): Promise<{ value: number }> {
+        throw this.unimplemented("Mobile only.")
+    }
 }
 
-//TODO option a) pull in the tiki js sdk and wrap, or b) just mark them all as unimplemented.
