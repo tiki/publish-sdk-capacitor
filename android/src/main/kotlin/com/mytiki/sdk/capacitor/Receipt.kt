@@ -5,7 +5,7 @@ import com.getcapacitor.PluginCall
 import com.mytiki.tiki_sdk_android.channel.Channel
 import com.mytiki.tiki_sdk_android.trail.rsp.RspLicense
 
-class License(private val channel: Channel) {
+class Receipt(private val channel: Channel) {
     fun create(call: PluginCall) {}
     fun get(call: PluginCall) {}
     fun all(call: PluginCall) {}
