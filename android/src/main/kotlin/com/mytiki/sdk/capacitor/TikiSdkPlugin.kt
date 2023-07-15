@@ -11,5 +11,7 @@ class TikiSdkPlugin : Plugin() {
     private val trail: Trail = Trail()
 
     @PluginMethod
-    fun createLicense(call: PluginCall) = trail.license.echo(call)
+    fun createTitle(call: PluginCall) = trail.title.create(call)
+    @PluginMethod
+    fun getTitle(call: PluginCall) = trail.title.get(call)
 }
