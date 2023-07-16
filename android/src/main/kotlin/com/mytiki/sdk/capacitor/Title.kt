@@ -22,8 +22,7 @@ class Title(private val channel: Channel) {
                 ReqTitle(
                     call.getString("ptr")!!,
                     tags,
-                    call.getString("description"),
-                    call.getString("origin")
+                    call.getString("description")
                 )
             )
             { args ->
@@ -35,14 +34,9 @@ class Title(private val channel: Channel) {
 
     fun get(call: PluginCall) {
         val deferred = MainScope().async {
-            val tags: List<Tag> =
-                call.getArray("tags").toList<String>().map { tag -> Tag.from(tag) }
             val title: RspTitle = channel.request(
                 TrailMethod.TITLE_GET,
-                ReqTitleGet(
-                    call.getString("ptr")!!,
-                    call.getString("origin")
-                )
+                ReqTitleGet(call.getString("ptr")!!)
             )
             { args ->
                 RspTitle.from(args)
@@ -51,14 +45,16 @@ class Title(private val channel: Channel) {
         }
     }
 
-    private fun toJS(title: RspTitle): JSObject {
-        val ret = JSObject()
-        ret.put("id", title.id)
-        ret.put("hashedPtr", title.hashedPtr)
-        ret.put("origin", title.origin)
-        ret.put("description", title.description)
-        val tags: List<String>? = title.tags?.map { tag -> tag.value }
-        ret.put("tags", if (tags != null) JSArray(tags) else null)
-        return ret;
+    companion object {
+        fun toJS(title: RspTitle): JSObject {
+            val ret = JSObject()
+            ret.put("id", title.id)
+            ret.put("hashedPtr", title.hashedPtr)
+            ret.put("origin", title.origin)
+            ret.put("description", title.description)
+            val tags: List<String>? = title.tags?.map { tag -> tag.value }
+            ret.put("tags", if (tags != null) JSArray(tags) else null)
+            return ret;
+        }
     }
 }
