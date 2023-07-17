@@ -100,10 +100,10 @@ window.customElements.define(
       self.shadowRoot
         .querySelector('#take-photo')
         .addEventListener('click', async function (e) {
-          const rsp = await Tiki.initialize({
-            id: '835ed1d1-5c95-46f0-97d6-9973e093e26d',
-            publishingId: 'be19730a-00d5-45f5-b18e-2e19eb25f311',
-          });
+          const rsp = await Tiki.initialize(
+            '835ed1d1-5c95-46f0-97d6-9973e093e26d',
+            'be19730a-00d5-45f5-b18e-2e19eb25f311',
+          );
           console.log(`rsp is: address: ${rsp.address} id: ${rsp.id}`);
 
           try {

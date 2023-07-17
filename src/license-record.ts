@@ -3,13 +3,13 @@
  * MIT license. See LICENSE file in root directory.
  */
 
+import type { CommonUsecases } from './common-usecases';
 import type { TitleRecord } from './title-record';
-import type { Use } from './use';
 
 export interface LicenseRecord {
   id: string;
   title: TitleRecord;
-  uses: Use[];
+  uses: { usecases: (CommonUsecases | string)[]; destinations?: string[] }[];
   terms: string;
   description?: string;
   expiry?: number;
