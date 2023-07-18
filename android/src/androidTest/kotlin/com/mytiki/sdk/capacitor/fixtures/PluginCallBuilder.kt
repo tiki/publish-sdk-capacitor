@@ -16,15 +16,8 @@ import org.json.JSONObject
 import java.util.UUID
 
 
-class PluginCallBuilder {
+class PluginCallBuilder(val req: JSONObject? = null) {
     val complete: CompletableDeferred<JSONObject> = CompletableDeferred()
-    var req: JSObject? = null
-        private set
-
-    fun req(req: JSONObject): PluginCallBuilder {
-        this.req = JSObject.fromJSONObject(req)
-        return this
-    }
 
     fun build(): PluginCall {
         val handler = mockk<MessageHandler>(relaxed = true)
@@ -38,7 +31,7 @@ class PluginCallBuilder {
             UUID.randomUUID().toString(),
             UUID.randomUUID().toString(),
             UUID.randomUUID().toString(),
-            req
+            if (req != null) JSObject.fromJSONObject(req) else JSObject()
         );
     }
 }

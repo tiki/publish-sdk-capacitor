@@ -5,35 +5,48 @@
 
 package com.mytiki.sdk.capacitor
 
-import android.content.Context
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.platform.app.InstrumentationRegistry
 import com.mytiki.sdk.capacitor.fixtures.PluginCallBuilder
+import com.mytiki.sdk.capacitor.fixtures.TikiSdkInit
 import junit.framework.TestCase.*
 import kotlinx.coroutines.test.runTest
 import org.json.JSONObject
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.util.UUID
 
 @RunWith(AndroidJUnit4::class)
 class InitializeTest {
     private val tiki: TikiSdk = TikiSdk()
-    private val appContext: Context =
-        InstrumentationRegistry.getInstrumentation().getTargetContext();
+    private var address: String = "dummy";
+    private var id: String = "dummy";
+
+    init {
+        val init = TikiSdkInit(tiki)
+        address = init.address
+        id = init.id
+    }
 
     @Test
-    fun initialize() = runTest {
+    fun address() = runTest {
         val call = PluginCallBuilder()
-            .req(
-                JSONObject()
-                    .put("id", UUID.randomUUID().toString())
-                    .put("publishingId", "be19730a-00d5-45f5-b18e-2e19eb25f311")
-            )
-        tiki.initialize(call.build(), appContext)
+        tiki.address(call.build())
         val res: JSONObject = call.complete.await()
+        assertEquals(address, res.get("address"))
+    }
 
-        assertNotNull(res.get("address"))
-        assertEquals(call.req?.get("id"), res.get("id"))
+    @Test
+    fun id() = runTest {
+        val call = PluginCallBuilder()
+        tiki.id(call.build())
+        val res: JSONObject = call.complete.await()
+        assertEquals(id, res.get("id"))
+    }
+
+    @Test
+    fun isInitialized() = runTest {
+        val call = PluginCallBuilder()
+        tiki.isInitialized(call.build())
+        val res: JSONObject = call.complete.await()
+        assertEquals(res.get("isInitialized"), true)
     }
 }
