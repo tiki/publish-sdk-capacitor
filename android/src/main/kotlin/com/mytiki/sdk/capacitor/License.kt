@@ -11,6 +11,7 @@ import com.getcapacitor.PluginCall
 import com.mytiki.tiki_sdk_android.channel.Channel
 import com.mytiki.tiki_sdk_android.trail.TrailMethod
 import com.mytiki.tiki_sdk_android.trail.Use
+import com.mytiki.tiki_sdk_android.trail.Usecase
 import com.mytiki.tiki_sdk_android.trail.req.ReqLicense
 import com.mytiki.tiki_sdk_android.trail.req.ReqLicenseAll
 import com.mytiki.tiki_sdk_android.trail.req.ReqLicenseGet
@@ -18,18 +19,36 @@ import com.mytiki.tiki_sdk_android.trail.rsp.RspLicense
 import com.mytiki.tiki_sdk_android.trail.rsp.RspLicenses
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.async
+import org.json.JSONArray
+import org.json.JSONObject
 import java.util.Date
 
 class License(private val channel: Channel) {
     fun create(call: PluginCall) {
         val deferred = MainScope().async {
             val expiry: Long? = call.getLong("expiry")
-            val uses: List<Map<String, Any?>>? = call.getArray("uses").toList()
+            val uses: List<Use>? =
+                call.getArray("uses").toList<JSONObject>()?.map { use ->
+                    val uArray: JSONArray? = use.getJSONArray("usecases");
+                    val usecases = mutableListOf<Usecase>()
+                    if (uArray != null) {
+                        for (i in 0 until uArray.length())
+                            usecases.add(Usecase.from(uArray.getString(i)))
+                    }
+                    val dArray: JSONArray? = use.optJSONArray("destinations");
+                    var destinations: List<String>? = null
+                    if (dArray != null) {
+                        destinations = mutableListOf()
+                        for (i in 0 until dArray.length())
+                            destinations.add(dArray.getString(i))
+                    }
+                    Use(usecases, destinations)
+                }
             val rsp: RspLicense = channel.request(
                 TrailMethod.LICENSE_CREATE,
                 ReqLicense(
                     call.getString("titleId")!!,
-                    uses?.map { use -> Use.from(use) } ?: emptyList(),
+                    uses ?: emptyList(),
                     call.getString("terms")!!,
                     if (expiry != null) Date(expiry) else null,
                     call.getString("destination")

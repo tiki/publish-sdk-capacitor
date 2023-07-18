@@ -1,10 +1,34 @@
+/*
+ * Copyright (c) TIKI Inc.
+ * MIT license. See LICENSE file in root directory.
+ */
+
 import { registerPlugin } from '@capacitor/core';
 
-import type { TikiSdkPlugin } from './definitions';
+import { CommonTags } from './common-tags';
+import { CommonUsecases } from './common-usecases';
+import type { LicenseRecord } from './license-record';
+import type { PayableRecord } from './payable-record';
+import type { ReceiptRecord } from './receipt-record';
+import { Tag } from './tag';
+import { TikiSdk } from './tiki-sdk';
+import type { TikiSdkPlugin } from './tiki-sdk-plugin';
+import type { TitleRecord } from './title-record';
+import { Usecase } from './usecase';
 
-const Tiki = registerPlugin<TikiSdkPlugin>('TikiSdk', {
+const plugin = registerPlugin<TikiSdkPlugin>('TikiSdk', {
   web: () => import('./web').then(m => new m.TikiSdkWeb()),
 });
-
-export * from './definitions';
-export { Tiki };
+const tiki: TikiSdk = new TikiSdk(plugin);
+export {
+  tiki,
+  TikiSdk,
+  LicenseRecord,
+  ReceiptRecord,
+  TitleRecord,
+  PayableRecord,
+  Usecase,
+  Tag,
+  CommonUsecases,
+  CommonTags,
+};

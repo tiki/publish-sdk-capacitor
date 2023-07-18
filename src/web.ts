@@ -5,25 +5,14 @@
 
 import { WebPlugin } from '@capacitor/core';
 
-import type { TikiSdkPlugin } from './definitions';
 import type { LicenseRecord } from './license-record';
 import type { PayableRecord } from './payable-record';
 import type { ReceiptRecord } from './receipt-record';
+import type { TikiSdkPlugin } from './tiki-sdk-plugin';
 import type { TitleRecord } from './title-record';
-import type { Use } from './use';
 
 export class TikiSdkWeb extends WebPlugin implements TikiSdkPlugin {
   address(): Promise<{ address: string }> {
-    throw this.unimplemented('Mobile Only.');
-  }
-
-  createLicense(_: {
-    titleId: string;
-    uses: Use[];
-    terms: string;
-    expiry?: number;
-    description?: string;
-  }): Promise<LicenseRecord> {
     throw this.unimplemented('Mobile Only.');
   }
 
@@ -103,6 +92,16 @@ export class TikiSdkWeb extends WebPlugin implements TikiSdkPlugin {
   }
 
   isInitialized(): Promise<{ isInitialized: boolean }> {
+    throw this.unimplemented('Mobile Only.');
+  }
+
+  createLicense(_: {
+    titleId: string;
+    uses: { usecases: string[]; destinations?: string[] }[];
+    terms: string;
+    expiry?: number;
+    description?: string;
+  }): Promise<LicenseRecord> {
     throw this.unimplemented('Mobile Only.');
   }
 }

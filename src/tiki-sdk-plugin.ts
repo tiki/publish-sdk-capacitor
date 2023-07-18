@@ -7,7 +7,6 @@ import type { LicenseRecord } from './license-record';
 import type { PayableRecord } from './payable-record';
 import type { ReceiptRecord } from './receipt-record';
 import type { TitleRecord } from './title-record';
-import type { Use } from './use';
 
 export interface TikiSdkPlugin {
   id(): Promise<{ id: string }>;
@@ -34,7 +33,7 @@ export interface TikiSdkPlugin {
 
   createLicense(options: {
     titleId: string;
-    uses: Use[];
+    uses: { usecases: string[]; destinations?: string[] }[];
     terms: string;
     expiry?: number;
     description?: string;
