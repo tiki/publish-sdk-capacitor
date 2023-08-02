@@ -19,16 +19,13 @@ import { Usecase } from './usecase';
 const plugin = registerPlugin<TikiSdkPlugin>('TikiSdk', {
   web: () => import('./web').then(m => new m.TikiSdkWeb()),
 });
-const tiki: TikiSdk = new TikiSdk(plugin);
-export {
-  tiki,
+const instance: TikiSdk = new TikiSdk(plugin);
+
+export { instance, Usecase, Tag, CommonUsecases, CommonTags };
+export type {
   TikiSdk,
   LicenseRecord,
   ReceiptRecord,
   TitleRecord,
   PayableRecord,
-  Usecase,
-  Tag,
-  CommonUsecases,
-  CommonTags,
 };

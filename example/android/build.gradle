@@ -21,9 +21,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven {
-            url "/Users/maudi/Development/Repositories/TIKI/tiki-sdk-android/app/build/repo"
-        }
     }
 }
 
