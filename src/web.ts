@@ -20,7 +20,7 @@ export class TikiSdkWeb extends WebPlugin implements TikiSdkPlugin {
     licenseId: string;
     amount: string;
     type: string;
-    expiry?: number;
+    expiry: number | null;
     description?: string;
     reference?: string;
   }): Promise<PayableRecord> {
@@ -48,7 +48,7 @@ export class TikiSdkWeb extends WebPlugin implements TikiSdkPlugin {
     throw this.unimplemented('Mobile Only.');
   }
 
-  getLicenses(_: { titleId: string }): Promise<LicenseRecord[]> {
+  getLicenses(_: { titleId: string }): Promise<{ licenses: LicenseRecord[] }> {
     throw this.unimplemented('Mobile Only.');
   }
 
@@ -56,7 +56,9 @@ export class TikiSdkWeb extends WebPlugin implements TikiSdkPlugin {
     throw this.unimplemented('Mobile Only.');
   }
 
-  getPayables(_: { licenseId: string }): Promise<PayableRecord[]> {
+  getPayables(_: {
+    licenseId: string;
+  }): Promise<{ payables: PayableRecord[] }> {
     throw this.unimplemented('Mobile Only.');
   }
 
@@ -64,7 +66,9 @@ export class TikiSdkWeb extends WebPlugin implements TikiSdkPlugin {
     throw this.unimplemented('Mobile Only.');
   }
 
-  getReceipts(_: { payableId: string }): Promise<ReceiptRecord[]> {
+  getReceipts(_: {
+    payableId: string;
+  }): Promise<{ receipts: ReceiptRecord[] }> {
     throw this.unimplemented('Mobile Only.');
   }
 
@@ -99,7 +103,7 @@ export class TikiSdkWeb extends WebPlugin implements TikiSdkPlugin {
     titleId: string;
     uses: { usecases: string[]; destinations?: string[] }[];
     terms: string;
-    expiry?: number;
+    expiry: number | null;
     description?: string;
   }): Promise<LicenseRecord> {
     throw this.unimplemented('Mobile Only.');

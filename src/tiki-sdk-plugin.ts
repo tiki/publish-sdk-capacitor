@@ -35,22 +35,26 @@ export interface TikiSdkPlugin {
     titleId: string;
     uses: { usecases: string[]; destinations?: string[] }[];
     terms: string;
-    expiry?: number;
+    expiry: number | null;
     description?: string;
   }): Promise<LicenseRecord>;
   getLicense(options: { id: string }): Promise<LicenseRecord>;
-  getLicenses(options: { titleId: string }): Promise<LicenseRecord[]>;
+  getLicenses(options: {
+    titleId: string;
+  }): Promise<{ licenses: LicenseRecord[] }>;
 
   createPayable(options: {
     licenseId: string;
     amount: string;
     type: string;
-    expiry?: number;
+    expiry: number | null;
     description?: string;
     reference?: string;
   }): Promise<PayableRecord>;
   getPayable(options: { id: string }): Promise<PayableRecord>;
-  getPayables(options: { licenseId: string }): Promise<PayableRecord[]>;
+  getPayables(options: {
+    licenseId: string;
+  }): Promise<{ payables: PayableRecord[] }>;
 
   createReceipt(options: {
     payableId: string;
@@ -59,5 +63,7 @@ export interface TikiSdkPlugin {
     reference?: string;
   }): Promise<ReceiptRecord>;
   getReceipt(options: { id: string }): Promise<ReceiptRecord>;
-  getReceipts(options: { payableId: string }): Promise<ReceiptRecord[]>;
+  getReceipts(options: {
+    payableId: string;
+  }): Promise<{ receipts: ReceiptRecord[] }>;
 }

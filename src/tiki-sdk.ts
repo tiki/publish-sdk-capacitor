@@ -53,8 +53,11 @@ export class TikiSdk {
       tags: tags.map(tag => tag.value),
       description,
     });
-  getTitle = (ptr: string): Promise<TitleRecord> =>
-    this.plugin.getTitle({ ptr });
+  getTitle = async (ptr: string): Promise<TitleRecord | undefined> => {
+    const rsp = await this.plugin.getTitle({ ptr });
+    if (rsp.id != null) return rsp;
+    else return undefined;
+  };
 
   createLicense = (
     titleId: string,
@@ -63,6 +66,7 @@ export class TikiSdk {
     expiry?: Date,
     description?: string,
   ): Promise<LicenseRecord> => {
+      console.log(`EXPIRY IS: ${expiry?.getTime() ?? null}`)
     return this.plugin.createLicense({
       titleId,
       uses: uses.map(use => {
@@ -72,16 +76,19 @@ export class TikiSdk {
         };
       }),
       terms,
-      expiry: expiry?.getTime(),
+      expiry: expiry?.getTime() ?? null,
       description,
     });
   };
 
-  getLicense = (id: string): Promise<LicenseRecord> =>
-    this.plugin.getLicense({ id });
+  getLicense = async (id: string): Promise<LicenseRecord | undefined> => {
+    const rsp = await this.plugin.getLicense({ id });
+    if (rsp.id != null) return rsp;
+    else return undefined;
+  };
 
-  getLicenses = (titleId: string): Promise<LicenseRecord[]> =>
-    this.plugin.getLicenses({ titleId });
+  getLicenses = async (titleId: string): Promise<LicenseRecord[]> =>
+    (await this.plugin.getLicenses({ titleId })).licenses;
 
   createPayable = (
     licenseId: string,
@@ -95,16 +102,19 @@ export class TikiSdk {
       licenseId,
       amount,
       type,
-      expiry: expiry?.getTime(),
+      expiry: expiry?.getTime() ?? null,
       description,
       reference,
     });
 
-  getPayable = (id: string): Promise<PayableRecord> =>
-    this.plugin.getPayable({ id });
+  getPayable = async (id: string): Promise<PayableRecord | undefined> => {
+    const rsp = await this.plugin.getPayable({ id });
+    if (rsp.id != null) return rsp;
+    else return undefined;
+  };
 
-  getPayables = (licenseId: string): Promise<PayableRecord[]> =>
-    this.plugin.getPayables({ licenseId });
+  getPayables = async (licenseId: string): Promise<PayableRecord[]> =>
+    (await this.plugin.getPayables({ licenseId })).payables;
 
   createReceipt = (
     payableId: string,
@@ -119,9 +129,12 @@ export class TikiSdk {
       reference,
     });
 
-  getReceipt = (id: string): Promise<ReceiptRecord> =>
-    this.plugin.getReceipt({ id });
+  getReceipt = async (id: string): Promise<ReceiptRecord | undefined> => {
+    const rsp = await this.plugin.getReceipt({ id });
+    if (rsp.id != null) return rsp;
+    else return undefined;
+  };
 
-  getReceipts = (payableId: string): Promise<ReceiptRecord[]> =>
-    this.plugin.getReceipts({ payableId });
+  getReceipts = async (payableId: string): Promise<ReceiptRecord[]> =>
+    (await this.plugin.getReceipts({ payableId })).receipts;
 }
