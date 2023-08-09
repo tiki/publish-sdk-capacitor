@@ -29,7 +29,7 @@
   "devDependencies": {
     "@capacitor/cli": "^5.1.1",
     "@rushstack/eslint-patch": "^1.2.0",
-    "@tsconfig/node18": "^2.0.1",
+    "@tsconfig/node18": "^18.2.0",
     "@types/node": "^18.16.17",
     "@types/uuid": "^9.0.2",
     "@vitejs/plugin-vue": "^4.2.3",
