@@ -12,7 +12,7 @@ concurrency:
 jobs:
   version:
     if: startsWith(github.head_ref, 'release/')
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     outputs:
       tag: ${{ steps.semver.outputs.nextStrict }}
     steps:

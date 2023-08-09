@@ -21,7 +21,7 @@ jobs:
   release:
 #    if: github.event.pull_request.merged == true && startsWith(github.head_ref, 'release/')
     environment: Production
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     outputs:
       tag: ${{ steps.tag.outputs.version }}
     steps:
@@ -40,11 +40,8 @@ jobs:
       - name: Install JS dependencies
         run: npm ci
 
-      - name: brute force
-        run: cd ios && pod install
-
-#      - name: Build Dist
-#        run: npm run verify
+      - name: Build Dist
+        run: npm run verify
 
       - name: Get version
         id: version
