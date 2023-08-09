@@ -65,9 +65,8 @@ export class TikiSdk {
     terms: string,
     expiry?: Date,
     description?: string,
-  ): Promise<LicenseRecord> => {
-      console.log(`EXPIRY IS: ${expiry?.getTime() ?? null}`)
-    return this.plugin.createLicense({
+  ): Promise<LicenseRecord> =>
+    this.plugin.createLicense({
       titleId,
       uses: uses.map(use => {
         return {
@@ -79,7 +78,6 @@ export class TikiSdk {
       expiry: expiry?.getTime() ?? null,
       description,
     });
-  };
 
   getLicense = async (id: string): Promise<LicenseRecord | undefined> => {
     const rsp = await this.plugin.getLicense({ id });
