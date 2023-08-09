@@ -1,6 +1,6 @@
 {
   "name": "@mytiki/tiki-sdk-capacitor",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Add TIKI's zero-party data monetization infrastructure to you CapacitorJS app",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -8,10 +8,10 @@
   "types": "dist/esm/index.d.ts",
   "unpkg": "dist/plugin.js",
   "files": [
-    "../android/src/main/",
+    "android/src/main/",
     "android/build.gradle",
     "dist/",
-    "../ios/Plugin/",
+    "ios/Plugin/",
     "MytikiTikiSdkCapacitor.podspec"
   ],
   "author": "Tiki inc.",
