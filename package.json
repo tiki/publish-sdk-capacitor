@@ -17,7 +17,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tiki-bar/tiki-sdk-capacitor.git"
+    "url": "https://github.com/tiki-bar/tiki-sdk-capacitor.git"
   },
   "bugs": {
     "url": "https://github.com/tiki-bar/tiki-sdk-capacitor/issues"
@@ -25,7 +25,7 @@
   "keywords": [
     "capacitor",
     "plugin",
-    "native"
+    "tiki"
   ],
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
