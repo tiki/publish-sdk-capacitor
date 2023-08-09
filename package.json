@@ -4,6 +4,7 @@
   "description": "Add TIKI's zero-party data monetization infrastructure to you CapacitorJS app",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
+  "type": "module",
   "types": "dist/esm/index.d.ts",
   "unpkg": "dist/plugin.js",
   "files": [
