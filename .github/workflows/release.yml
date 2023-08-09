@@ -40,8 +40,11 @@ jobs:
       - name: Install JS dependencies
         run: npm ci
 
-      - name: Build Dist
-        run: npm run verify
+      - name: brute force
+        run: cd ios && pod install
+
+#      - name: Build Dist
+#        run: npm run verify
 
       - name: Get version
         id: version
