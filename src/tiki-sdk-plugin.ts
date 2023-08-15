@@ -11,12 +11,9 @@ import type { TitleRecord } from './title-record';
 export interface TikiSdkPlugin {
   id(): Promise<{ id: string }>;
   address(): Promise<{ address: string }>;
-
   isInitialized(): Promise<{ isInitialized: boolean }>;
-  initialize(options: {
-    id: string;
-    publishingId: string;
-  }): Promise<{ id: string; address: string }>;
+
+  initialize(options: { id: string; publishingId: string }): Promise<{ id: string; address: string }>;
 
   guard(options: {
     ptr: string;
@@ -24,11 +21,7 @@ export interface TikiSdkPlugin {
     destinations?: string[];
   }): Promise<{ success: boolean; reason?: string }>;
 
-  createTitle(options: {
-    ptr: string;
-    tags: string[];
-    description?: string;
-  }): Promise<TitleRecord>;
+  createTitle(options: { ptr: string; tags: string[]; description?: string }): Promise<TitleRecord>;
   getTitle(options: { ptr: string }): Promise<TitleRecord>;
 
   createLicense(options: {
@@ -39,9 +32,7 @@ export interface TikiSdkPlugin {
     description?: string;
   }): Promise<LicenseRecord>;
   getLicense(options: { id: string }): Promise<LicenseRecord>;
-  getLicenses(options: {
-    titleId: string;
-  }): Promise<{ licenses: LicenseRecord[] }>;
+  getLicenses(options: { titleId: string }): Promise<{ licenses: LicenseRecord[] }>;
 
   createPayable(options: {
     licenseId: string;
@@ -52,9 +43,7 @@ export interface TikiSdkPlugin {
     reference?: string;
   }): Promise<PayableRecord>;
   getPayable(options: { id: string }): Promise<PayableRecord>;
-  getPayables(options: {
-    licenseId: string;
-  }): Promise<{ payables: PayableRecord[] }>;
+  getPayables(options: { licenseId: string }): Promise<{ payables: PayableRecord[] }>;
 
   createReceipt(options: {
     payableId: string;
@@ -63,7 +52,5 @@ export interface TikiSdkPlugin {
     reference?: string;
   }): Promise<ReceiptRecord>;
   getReceipt(options: { id: string }): Promise<ReceiptRecord>;
-  getReceipts(options: {
-    payableId: string;
-  }): Promise<{ receipts: ReceiptRecord[] }>;
+  getReceipts(options: { payableId: string }): Promise<{ receipts: ReceiptRecord[] }>;
 }

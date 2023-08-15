@@ -1,6 +1,6 @@
 {
   "name": "@mytiki/tiki-sdk-capacitor",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Add TIKI's zero-party data monetization infrastructure to you CapacitorJS app",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -52,7 +52,7 @@
     "@ionic/prettier-config": "^4.0.0",
     "@ionic/swiftlint-config": "^1.1.2",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
-    "eslint": "^7.32.0",
+    "eslint": "~7.32.0",
     "prettier": "~3.0.1",
     "prettier-plugin-java": "~2.2.0",
     "rimraf": "^5.0.1",
