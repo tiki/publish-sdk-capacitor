@@ -1,4 +1,7 @@
 # TIKI SDK (Capacitor Plugin)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 The TIKI SDK for Capacitor makes it easy to create monetizable zero-party data assets. Create a digitally signed, immutable audit trail with Title, License, Payable, and Receipt records. 
 
@@ -46,3 +49,19 @@ _NOTE: Currently only iOS and Android are supported, not Web. If you'd like to u
 - `/example`: A simple example project using the plugin
 
 ## Contributors ✨
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://mytiki.com"><img src="https://avatars.githubusercontent.com/u/3769672?v=4?s=100" width="100px;" alt="Mike Audi"/><br /><sub><b>Mike Audi</b></sub></a><br /><a href="https://github.com/tiki-bar/tiki-sdk-capacitor/commits?author=mike-audi" title="Code">💻</a> <a href="https://github.com/tiki-bar/tiki-sdk-capacitor/commits?author=mike-audi" title="Documentation">📖</a> <a href="https://github.com/tiki-bar/tiki-sdk-capacitor/pulls?q=is%3Apr+reviewed-by%3Amike-audi" title="Reviewed Pull Requests">👀</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
