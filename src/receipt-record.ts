@@ -33,4 +33,9 @@ export interface ReceiptRecord {
    * An optional reference identifier for the receipt.
    */
   reference?: string;
+
+  /**
+   * The date of creation of the license in milliseconds since the Unix epoch.
+   */
+  timestamp?: number;
 }

@@ -75,6 +75,7 @@ class Receipt(private val channel: Channel) {
             ret.put("amount", receipt.amount)
             ret.put("description", receipt.description)
             ret.put("reference", receipt.reference)
+            ret.put("timestamp", receipt.timestamp?.time)
             return ret;
         }
     }

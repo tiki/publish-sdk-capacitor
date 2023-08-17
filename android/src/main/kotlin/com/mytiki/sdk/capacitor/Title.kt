@@ -59,6 +59,7 @@ class Title(private val channel: Channel) {
             ret.put("description", title.description)
             val tags: List<String>? = title.tags?.map { tag -> tag.value }
             ret.put("tags", if (tags != null) JSArray(tags) else null)
+            ret.put("timestamp", title.timestamp?.time)
             return ret;
         }
     }

@@ -100,6 +100,7 @@ class License(private val channel: Channel) {
                 "uses",
                 if (license.uses != null) JSArray(license.uses?.map { use -> use.map() }) else null
             )
+            ret.put("timestamp", license.timestamp?.time)
             return ret;
         }
     }

@@ -68,7 +68,7 @@ dependencies {
     implementation project(':capacitor-android')
     implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
     implementation 'androidx.core:core-ktx:1.10.1'
-    implementation "com.mytiki:tiki-sdk-android:2.2.0"
+    implementation "com.mytiki:tiki-sdk-android:2.2.1"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
 
