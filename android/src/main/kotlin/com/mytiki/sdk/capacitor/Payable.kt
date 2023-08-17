@@ -81,6 +81,7 @@ class Payable(private val channel: Channel) {
             ret.put("description", payable.description)
             ret.put("expiry", payable.expiry?.time)
             ret.put("reference", payable.reference)
+            ret.put("timestamp", payable.timestamp?.time)
             return ret;
         }
     }

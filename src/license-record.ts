@@ -49,4 +49,9 @@ export interface LicenseRecord {
    * The expiration date of the license in milliseconds since the Unix epoch.
    */
   expiry?: number;
+
+  /**
+   * The date of creation of the license in milliseconds since the Unix epoch.
+   */
+  timestamp?: number;
 }

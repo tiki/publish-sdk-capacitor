@@ -34,4 +34,9 @@ export interface TitleRecord {
    * An optional description providing additional information about the record.
    */
   description?: string;
+
+  /**
+   * The date of creation of the license in milliseconds since the Unix epoch.
+   */
+  timestamp?: number;
 }

@@ -44,4 +44,9 @@ export interface PayableRecord {
    * An optional reference identifier for the payable.
    */
   reference?: string;
+
+  /**
+   * The date of creation of the license in milliseconds since the Unix epoch.
+   */
+  timestamp?: number;
 }
