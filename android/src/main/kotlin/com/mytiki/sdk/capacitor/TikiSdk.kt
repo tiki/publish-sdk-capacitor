@@ -16,6 +16,7 @@ import kotlinx.coroutines.async
 class TikiSdk {
     private val channel: Channel = Channel()
     val trail: Trail = Trail(channel)
+    val idp: Idp = Idp(channel)
 
     private var id: String? = null
     private var address: String? = null

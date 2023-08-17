@@ -13,6 +13,7 @@ import { registerPlugin } from '@capacitor/core';
 
 import { CommonTags } from './common-tags';
 import { CommonUsecases } from './common-usecases';
+import type { Jwt } from './jwt';
 import type { LicenseRecord } from './license-record';
 import type { PayableRecord } from './payable-record';
 import type { ReceiptRecord } from './receipt-record';
@@ -36,4 +37,4 @@ const plugin = registerPlugin<TikiSdkPlugin>('TikiSdk', {
 const instance: TikiSdk = new TikiSdk(plugin);
 
 export { instance, Usecase, Tag, CommonUsecases, CommonTags };
-export type { TikiSdk, LicenseRecord, ReceiptRecord, TitleRecord, PayableRecord };
+export type { TikiSdk, LicenseRecord, ReceiptRecord, TitleRecord, PayableRecord, Jwt };

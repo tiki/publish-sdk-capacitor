@@ -3,6 +3,7 @@
  * MIT license. See LICENSE file in root directory.
  */
 
+import type { Jwt } from './jwt';
 import type { LicenseRecord } from './license-record';
 import type { PayableRecord } from './payable-record';
 import type { ReceiptRecord } from './receipt-record';
@@ -278,4 +279,23 @@ export class TikiSdk {
    */
   getReceipts = async (payableId: string): Promise<ReceiptRecord[]> =>
     (await this.plugin.getReceipts({ payableId })).receipts;
+
+  /**
+   * Retrieves a JSON Web Token (JWT) by making a request to TIKI account service
+   *
+   * @returns A Promise that resolves to a JWT containing authorization information.
+   * @throws An error if the request for a new token fails.
+   */
+  token = async (): Promise<Jwt> => {
+    const rsp = await this.plugin.token();
+    if (rsp.accessToken != undefined) {
+      return {
+        accessToken: rsp.accessToken,
+        tokenType: rsp.tokenType,
+        expires: rsp.expires != undefined ? new Date(rsp.expires) : undefined,
+        refreshToken: rsp.refreshToken,
+        scope: rsp.scope,
+      };
+    } else throw Error('Failed to request a new authorization token.');
+  };
 }

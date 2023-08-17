@@ -61,4 +61,7 @@ class TikiSdkPlugin : Plugin() {
 
     @PluginMethod
     fun getReceipts(call: PluginCall) = tiki.trail.receipt.all(call)
+
+    @PluginMethod
+    fun token(call: PluginCall) = tiki.idp.token(call)
 }
