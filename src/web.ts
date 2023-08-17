@@ -110,4 +110,14 @@ export class TikiSdkWeb extends WebPlugin implements TikiSdkPlugin {
   getReceipts(_: { payableId: string }): Promise<{ receipts: ReceiptRecord[] }> {
     throw this.unimplemented('Mobile Only.');
   }
+
+  token(): Promise<{
+    accessToken?: string;
+    tokenType?: string;
+    expires?: number;
+    refreshToken?: string;
+    scope: string[];
+  }> {
+    throw this.unimplemented('Mobile Only.');
+  }
 }

@@ -53,4 +53,12 @@ export interface TikiSdkPlugin {
   }): Promise<ReceiptRecord>;
   getReceipt(options: { id: string }): Promise<ReceiptRecord>;
   getReceipts(options: { payableId: string }): Promise<{ receipts: ReceiptRecord[] }>;
+
+  token(): Promise<{
+    accessToken?: string;
+    tokenType?: string;
+    expires?: number;
+    refreshToken?: string;
+    scope: string[];
+  }>;
 }
