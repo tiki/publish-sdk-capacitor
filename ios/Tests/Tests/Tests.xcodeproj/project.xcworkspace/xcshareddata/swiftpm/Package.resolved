@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "swift-markdown-ui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gonzalezreal/swift-markdown-ui.git",
+      "state" : {
+        "revision" : "12b351a75201a8124c2f2e1f9fc6ef5cd812c0b9",
+        "version" : "2.1.0"
+      }
+    },
+    {
+      "identity" : "tiki-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tiki/tiki-sdk-ios.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "26d0fb174b859affa54cfa14c76374facf09c40f"
+      }
+    }
+  ],
+  "version" : 2
+}
