@@ -23,12 +23,20 @@ final class TestsUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
+    func testExample() async throws {
         // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
+    
         let tikiSdk = TikiSdkCapacitorSwift.TikiSdkCore().instance
-        tikiSdk.initialize(id: <#T##String#>, publishingId: <#T##String#>)
+        try? await tikiSdk.initialize(id: "testcust", publishingId: "dsadsa")
+        
+        // create title
+        // get title
+        // create license
+        // get license
+        // create payable
+        // get payable
+        // create receipt
+        // get receipt
         
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }

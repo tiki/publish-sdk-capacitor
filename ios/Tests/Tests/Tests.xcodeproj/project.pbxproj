@@ -14,6 +14,7 @@
 		8C0621DC2AAB5DC900CABC17 /* TestsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0621DB2AAB5DC900CABC17 /* TestsTests.swift */; };
 		8C0621E62AAB5DC900CABC17 /* TestsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0621E52AAB5DC900CABC17 /* TestsUITests.swift */; };
 		8C0621E82AAB5DC900CABC17 /* TestsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0621E72AAB5DC900CABC17 /* TestsUITestsLaunchTests.swift */; };
+		8C0621F82AAB621000CABC17 /* TikiSdkCapacitor in Frameworks */ = {isa = PBXBuildFile; productRef = 8C0621F72AAB621000CABC17 /* TikiSdkCapacitor */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C0621F82AAB621000CABC17 /* TikiSdkCapacitor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +83,7 @@
 				8C0621DA2AAB5DC900CABC17 /* TestsTests */,
 				8C0621E42AAB5DC900CABC17 /* TestsUITests */,
 				8C0621C72AAB5DC800CABC17 /* Products */,
+				8C0621F62AAB621000CABC17 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,6 +142,13 @@
 			name = Packages;
 			sourceTree = "<group>";
 		};
+		8C0621F62AAB621000CABC17 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -191,6 +201,9 @@
 				8C0621E32AAB5DC900CABC17 /* PBXTargetDependency */,
 			);
 			name = TestsUITests;
+			packageProductDependencies = (
+				8C0621F72AAB621000CABC17 /* TikiSdkCapacitor */,
+			);
 			productName = TestsUITests;
 			productReference = 8C0621E12AAB5DC900CABC17 /* TestsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -511,7 +524,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mytiki.TestsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -534,7 +549,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mytiki.TestsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -556,7 +573,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mytiki.TestsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -578,7 +597,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mytiki.TestsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -626,6 +647,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8C0621F72AAB621000CABC17 /* TikiSdkCapacitor */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TikiSdkCapacitor;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8C0621BE2AAB5DC800CABC17 /* Project object */;
 }
