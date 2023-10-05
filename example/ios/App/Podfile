@@ -1,3 +1,5 @@
+source 'https://github.com/tiki/PodspecRepo.git'
+
 require_relative '../../node_modules/@capacitor/ios/scripts/pods_helpers'
 
 platform :ios, '13.0'
@@ -16,7 +18,7 @@ end
 
 target 'App' do
   capacitor_pods
-  pod 'TikiSdk', :path => '../../../../ios'
+  pod 'TikiSdk'
 end
 
 post_install do |installer|

@@ -1,3 +1,5 @@
+source 'https://github.com/tiki/PodspecRepo.git'
+
 platform :ios, '14.0'
 
 def capacitor_pods
@@ -10,7 +12,7 @@ target 'Plugin' do
   capacitor_pods
   use_frameworks!
   
-  pod 'TikiSdk', :path => '../../ios'
+  pod 'TikiSdk'
 end
 
 target 'PluginTests' do
