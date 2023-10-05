@@ -248,8 +248,6 @@
 				Base,
 			);
 			mainGroup = 50ADFF7E201F53D600D50D53;
-			packageReferences = (
-			);
 			productRefGroup = 50ADFF89201F53D600D50D53 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -305,11 +303,23 @@
 				"${PODS_ROOT}/Target Support Files/Pods-PluginTests/Pods-PluginTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Capacitor/Capacitor.framework",
 				"${BUILT_PRODUCTS_DIR}/CapacitorCordova/Cordova.framework",
+				"${BUILT_PRODUCTS_DIR}/TikiSdk/TikiSdk.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/TikiSdk/App.framework/App",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/TikiSdk/Flutter.framework/Flutter",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/TikiSdk/flutter_secure_storage.framework/flutter_secure_storage",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/TikiSdk/sqlite3_flutter_libs.framework/sqlite3_flutter_libs",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/TikiSdk/sqlite3.framework/sqlite3",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Capacitor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cordova.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TikiSdk.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/App.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Flutter.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/flutter_secure_storage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/sqlite3_flutter_libs.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/sqlite3.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
