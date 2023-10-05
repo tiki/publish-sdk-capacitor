@@ -7,6 +7,7 @@ import Foundation
 import Capacitor
 import TikiSdk
 
+
 public class Idp{
     
     public var tikiSdk = TikiSdk.config()

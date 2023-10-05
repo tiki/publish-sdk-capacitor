@@ -7,7 +7,7 @@ import Foundation
 import Capacitor
 import TikiSdk
 
-class Receipt{
+public class Receipt{
     
     public var tikiSdk = TikiSdk.config()
     

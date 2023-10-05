@@ -7,7 +7,7 @@ import Foundation
 import Capacitor
 import TikiSdk
 
-class License{
+public class License{
     
     public var tikiSdk = TikiSdk.config()
     
