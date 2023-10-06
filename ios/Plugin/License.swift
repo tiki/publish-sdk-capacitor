@@ -11,7 +11,7 @@ public class License{
     
     public var tikiSdk = TikiSdk.config()
     
-    @objc func create(_ call: CAPPluginCall) async {
+    @objc public func create(_ call: CAPPluginCall) async {
         do{
             guard let titleId = call.getString("titleId"),
                   let usecases = call.getArray("usecases").map({ arr in
@@ -44,7 +44,7 @@ public class License{
         }
     }
     
-    @objc func get(_ call: CAPPluginCall) async {
+    @objc public func get(_ call: CAPPluginCall) async {
         do{
             guard let id = call.getString("id") else {
                 call.reject("Please provide the id of the License")
@@ -63,7 +63,7 @@ public class License{
         }
     }
     
-    @objc func all(_ call: CAPPluginCall) async {
+    @objc public func all(_ call: CAPPluginCall) async {
         do{
             guard let titleId = call.getString("titleId") else {
                 call.reject("Please provide titleId, amount and type in plugin call")
