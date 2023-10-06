@@ -7,7 +7,7 @@ import Foundation
 import TikiSdk
 import Capacitor
 
-class Title{
+public class Title{
     
     public var tikiSdk = TikiSdk.config()
 
