@@ -21,7 +21,7 @@ import TikiSdk
         do{
             let _ = try await tikiSdk.trail.guard(
                 ptr: ptr, usecases: usecases, destinations: destinations,
-                onPass: { call.resolve() },
+                onPass: { call.resolve([:]) },
                 onFail: { reason in call.reject(reason ?? "Not allowed.") }
                 )
         }catch{

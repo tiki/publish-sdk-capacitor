@@ -33,7 +33,7 @@ public class Payable{
             if(payable != nil){
                 call.resolve(Payable.toJS(payable!))
             }else{
-                call.resolve()
+                call.resolve([:])
             }
         }catch{
             call.reject(error.localizedDescription)
@@ -52,7 +52,7 @@ public class Payable{
             if(payable != nil){
                 call.resolve(Payable.toJS(payable!))
             }else{
-                call.resolve()
+                call.resolve([:])
             }
         }catch{
             call.reject(error.localizedDescription)

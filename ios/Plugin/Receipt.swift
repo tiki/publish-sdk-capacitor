@@ -31,7 +31,7 @@ public class Receipt{
             if(receipt != nil){
                 call.resolve(Receipt.toJS(receipt!))
             }else{
-                call.resolve()
+                call.resolve([:])
             }
         }catch{
             call.reject(error.localizedDescription)
@@ -50,7 +50,7 @@ public class Receipt{
             if(receipt != nil){
                 call.resolve(Receipt.toJS(receipt!))
             }else{
-                call.resolve()
+                call.resolve([:])
             }
         }catch{
             call.reject(error.localizedDescription)
