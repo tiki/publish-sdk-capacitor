@@ -39,7 +39,7 @@ public class Title{
             let origin = call.getString("origin")
             let title = try await tikiSdk.trail.title.get(ptr: ptr, origin: origin)
             if(title == nil){
-                call.resolve()
+                call.resolve([:])
             }else{
                 call.resolve(Title.toJS(title!))
             }
@@ -56,7 +56,7 @@ public class Title{
             }
             let title = try await tikiSdk.trail.title.id(id: id)
             if(title == nil){
-                call.resolve()
+                call.resolve([:])
             }else{
                 call.resolve(Title.toJS(title!))
             }

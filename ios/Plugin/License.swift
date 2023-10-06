@@ -37,7 +37,7 @@ public class License{
             if(license != nil){
                 call.resolve(License.toJS(license!))
             }else{
-                call.resolve()
+                call.resolve([:])
             }
         }catch{
             call.reject(error.localizedDescription)
@@ -56,7 +56,7 @@ public class License{
             if(license != nil){
                 call.resolve(License.toJS(license!))
             }else{
-                call.resolve()
+                call.resolve([:])
             }
         }catch{
             call.reject(error.localizedDescription)

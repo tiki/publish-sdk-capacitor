@@ -19,13 +19,18 @@ import Capacitor
                 let userId = call.getString("id")!
                 let publishingId = call.getString("publishingId")!
                 do{
-                    try await TikiSdk.config().initialize(id: userId,  publishingId: publishingId)
-                    self.address = try TikiSdk.address
-                    self.id = userId
-                    var ret = JSObject()
-                    ret["id"] = id
-                    ret["address"] = address
-                    call.resolve(ret)
+                    try await TikiSdk.config().initialize(id: userId,  publishingId: publishingId) {
+                        do{
+                            self.address = try TikiSdk.address
+                            self.id = userId
+                            var ret = JSObject()
+                            ret["id"] = self.id
+                            ret["address"] = self.address
+                            call.resolve(ret)
+                        }catch{
+                            call.reject("Tiki Sdk failed to initialize: \(error)")
+                        }
+                    }
                 }catch{
                     call.reject("Tiki Sdk failed to initialize: \(error)")
                 }
