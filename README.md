@@ -22,6 +22,34 @@ npx cap sync
 
 That's it. And yes, it's really that easy.
 
+### iOS only:
+
+Add TikiSdk dependencies in Podfile
+```
+source 'https://github.com/tiki/PodspecRepo.git' # Add this
+
+platform :ios, '14.0'
+
+def capacitor_pods
+  use_frameworks!
+  pod 'Capacitor', :path => '../node_modules/@capacitor/ios'
+  pod 'CapacitorCordova', :path => '../node_modules/@capacitor/ios'
+end
+
+target 'Plugin' do
+  capacitor_pods
+  use_frameworks! # Add this
+  
+  pod 'TikiSdk' # Add this
+end
+
+target 'PluginTests' do
+  capacitor_pods
+end
+```
+
+If Cocoapods can't find TikiSdk automatically, run `pod install --repo-update`.
+
 ## Initialization
 
 _Note: Before you get started, you will need a Publishing ID. It's free to create one; simply log in to our 🧑‍💻 [Developer Console](https://console.mytiki.com) and create a new Project._
