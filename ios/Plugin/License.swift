@@ -14,21 +14,25 @@ public class License{
     @objc public func create(_ call: CAPPluginCall) async {
         do{
             guard let titleId = call.getString("titleId"),
-                  let usecases = call.getArray("usecases").map({ arr in
-                      arr.map{ usecase in Usecase(usecase as! String) }
-                  }),
+                  let usecases = call.getObject("uses"),
                   let terms = call.getString("terms") else{
-                      call.reject("Please provide titleId and ")
+                      call.reject("Please provide titleId, terms and usecases")
                       return
                   }
             let destinations = call.getArray("destinations") as? [String]
-            let usecase = Use(usecases: usecases, destinations: destinations)
+            let usecase = Use(
+                usecases: usecases["usecases"].map{ usecase in
+                    Usecase(usecase)
+                },
+                destinations: usecases["destinations"].map{ destination in
+                    destination
+                }
             let expiry = call.getInt("expiry") != nil ? Date(milliseconds: Int64(exactly: call.getInt("expiry")!)!) : nil
             let description = call.getString("description")
             
             let license = try await tikiSdk.trail.license.create(
                 titleId: titleId,
-                uses: [],
+                uses: usecase,
                 terms: terms,
                 expiry: expiry,
                 description: description
