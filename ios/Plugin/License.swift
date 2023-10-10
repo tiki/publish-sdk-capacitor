@@ -22,7 +22,7 @@ public class License{
             let licenseUses: [Use] = useList.map{ usecase in
                 return usecase.map{ currentUsecase in
                     let usecases: [Usecase] = (currentUsecase["usecases"] as? [String])?.map{ stringUse in
-                        return Usecase(stringUse)
+                        return Usecase.from(usecase: stringUse)
                     } ?? []
                     let destinations: [String] = (currentUsecase["destinations"] as? [String])?.map{ stringUse in
                         return stringUse
