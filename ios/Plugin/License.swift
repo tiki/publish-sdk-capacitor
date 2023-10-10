@@ -14,21 +14,27 @@ public class License{
     @objc public func create(_ call: CAPPluginCall) async {
         do{
             guard let titleId = call.getString("titleId"),
-                  let usecases = call.getArray("usecases").map({ arr in
-                      arr.map{ usecase in Usecase(usecase as! String) }
-                  }),
                   let terms = call.getString("terms") else{
-                      call.reject("Please provide titleId and ")
-                      return
-                  }
-            let destinations = call.getArray("destinations") as? [String]
-            let usecase = Use(usecases: usecases, destinations: destinations)
+                call.reject("Please provide titleId, terms and usecases")
+                return
+            }
+            let useList = call.getArray("uses") as? [[String: Any]]
+            let licenseUses: [Use] = useList.map{ usecase in
+                return usecase.map{ currentUsecase in
+                    let usecases: [Usecase] = (currentUsecase["usecases"] as? [String])?.map{ stringUse in
+                        return Usecase.from(usecase: stringUse)
+                    } ?? []
+                    let destinations: [String] = (currentUsecase["destinations"] as? [String])?.map{ stringUse in
+                        return stringUse
+                    } ?? []
+                    return Use(usecases: usecases, destinations: destinations)
+                }
+            } ?? []
             let expiry = call.getInt("expiry") != nil ? Date(milliseconds: Int64(exactly: call.getInt("expiry")!)!) : nil
             let description = call.getString("description")
-            
             let license = try await tikiSdk.trail.license.create(
                 titleId: titleId,
-                uses: [],
+                uses: licenseUses,
                 terms: terms,
                 expiry: expiry,
                 description: description
@@ -82,7 +88,7 @@ public class License{
         var ret = JSObject()
         ret["id"] = license.id
         ret["title"] = Title.toJS(license.title)
-        ret["uses"] = license.uses
+        ret["uses"] = license.uses.map{ useObj in useObj.asDictionary() }
         ret["terms"] = license.terms
         ret["description"] = license.description
         ret["expiry"] = license.expiry

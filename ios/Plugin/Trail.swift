@@ -14,7 +14,7 @@ import TikiSdk
     @objc public func `guard`(call: CAPPluginCall) async{
         let usecasesArray = call.getArray("usecases") as? [String] ?? []
         let usecases: [Usecase] = usecasesArray.compactMap { usecaseString in
-            return Usecase(usecaseString)
+            return Usecase.from(usecase: usecaseString)
         }
         let destinations = call.getArray("destinations") as? [String] ?? []
         let ptr = call.getString("ptr") ?? ""

@@ -71,7 +71,7 @@ public class Title{
         ret["hashedPtr"] = title.hashedPtr
         ret["description"] = title.description
         ret["id"] = title.id
-        ret["tags"] = title.tags
+        ret["tags"] = title.tags.map{tag in tag.toString()}
         ret["origin"] = title.origin
         return ret
     }

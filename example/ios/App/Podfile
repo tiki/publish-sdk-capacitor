@@ -18,7 +18,7 @@ end
 
 target 'App' do
   capacitor_pods
-  pod 'TikiSdk', '~> 2.1.1'
+  pod 'TikiSdk', '~> 2.1.2'
 end
 
 post_install do |installer|
