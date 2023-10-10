@@ -12,7 +12,7 @@ target 'Plugin' do
   capacitor_pods
   use_frameworks!
   
-  pod 'TikiSdk', "~> 2.1.2"
+  pod 'TikiSdk', "~> 2.1.7"
 end
 
 target 'PluginTests' do
