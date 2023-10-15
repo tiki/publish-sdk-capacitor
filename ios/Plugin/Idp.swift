@@ -9,12 +9,15 @@ import TikiSdk
 
 
 public class Idp{
+    private var tiki: TikiSdk
     
-    public var tikiSdk = TikiSdk.config()
+    init(tiki: TikiSdk) {
+        self.tiki = tiki
+    }
     
     @objc public func token(_ call: CAPPluginCall) async {
         do{
-            let token = try await tikiSdk.idp.token()
+            let token = try await tiki.idp.token()
             var ret = JSObject()
             ret["accessToken"] = token.accessToken
             ret["tokenType"] = token.tokenType

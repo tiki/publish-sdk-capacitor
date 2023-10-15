@@ -8,8 +8,11 @@ import TikiSdk
 import Capacitor
 
 public class Title{
+    private var tiki: TikiSdk
     
-    public var tikiSdk = TikiSdk.config()
+    init(tiki: TikiSdk) {
+        self.tiki = tiki
+    }
 
     @objc func create(_ call: CAPPluginCall) async{
         do{
@@ -23,7 +26,7 @@ public class Title{
             }
             let description = call.getString("description")
             let origin = call.getString("origin")
-            let title = try await tikiSdk.trail.title.create(ptr: ptr!, tags: tags!, description: description, origin: origin)
+            let title = try await tiki.trail.title.create(ptr: ptr!, tags: tags!, description: description, origin: origin)
             call.resolve(Title.toJS(title!))
         }catch{
             call.reject(error.localizedDescription)
@@ -37,7 +40,7 @@ public class Title{
                 return
             }
             let origin = call.getString("origin")
-            let title = try await tikiSdk.trail.title.get(ptr: ptr, origin: origin)
+            let title = try await tiki.trail.title.get(ptr: ptr, origin: origin)
             if(title == nil){
                 call.resolve([:])
             }else{
@@ -54,7 +57,7 @@ public class Title{
                 call.reject("Please provide id in plugin call.")
                 return
             }
-            let title = try await tikiSdk.trail.title.id(id: id)
+            let title = try await tiki.trail.title.id(id: id)
             if(title == nil){
                 call.resolve([:])
             }else{
