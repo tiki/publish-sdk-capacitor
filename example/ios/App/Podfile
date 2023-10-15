@@ -16,7 +16,8 @@ end
 
 target 'App' do
   capacitor_pods
-  pod 'TikiSdk', '~> 2.1.7'
+  pod 'TikiSdkRelease', '2.1.9', :configurations => 'Release'
+  pod 'TikiSdkDebug', '2.1.9', :configurations => 'Debug'
 end
 
 post_install do |installer|
