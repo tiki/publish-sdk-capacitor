@@ -8,8 +8,8 @@ end
 
 def tiki_sdk
   use_frameworks!
-  pod 'TikiSdkDebug', '2.1.9', :configurations => 'Debug'
-  pod 'TikiSdkRelease', '2.1.9', :configurations => 'Release'
+  pod 'TikiSdkDebug', '2.1.10', :configurations => 'Debug'
+  pod 'TikiSdkRelease', '2.1.10', :configurations => 'Release'
 end
 
 target 'Plugin' do
