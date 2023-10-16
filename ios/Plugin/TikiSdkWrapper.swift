@@ -7,19 +7,26 @@ import Foundation
 import TikiSdk
 import Capacitor
 
-@objc public class TikiSdkCore: NSObject {
-
-    public var instance = TikiSdk.config()
+@objc public class TikiSdkWrapper: NSObject {
+    public var idp: Idp
+    public var trail: Trail
     
     private var id: String?
     private var address: String?
+    private var tiki: TikiSdk
+    
+    override init(){
+        self.tiki = TikiSdk.config()
+        self.idp = Idp(tiki: tiki)
+        self.trail = Trail(tiki: tiki)
+    }
 
     @objc func initialize(call: CAPPluginCall) {
             Task {
                 let userId = call.getString("id")!
                 let publishingId = call.getString("publishingId")!
                 do{
-                    try await TikiSdk.config().initialize(id: userId,  publishingId: publishingId) {
+                    try await tiki.initialize(id: userId,  publishingId: publishingId) {
                         do{
                             self.address = try TikiSdk.address
                             self.id = userId

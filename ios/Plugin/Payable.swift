@@ -8,8 +8,11 @@ import Capacitor
 import TikiSdk
 
 public class Payable{
+    private var tiki: TikiSdk
     
-    public var tikiSdk = TikiSdk.config()
+    init(tiki: TikiSdk) {
+        self.tiki = tiki
+    }
     
     @objc func create(_ call: CAPPluginCall) async {
         do{
@@ -22,7 +25,7 @@ public class Payable{
             let expiry = call.getInt("expiry") != nil ? Date(milliseconds: Int64(exactly: call.getInt("expiry")!)!) : nil
             let description = call.getString("description")
             let reference = call.getString("reference")
-            let payable = try await tikiSdk.trail.payable.create(
+            let payable = try await tiki.trail.payable.create(
                 licenseId: licenseId,
                 amount: amount,
                 type: type,
@@ -46,7 +49,7 @@ public class Payable{
                 call.reject("Please provide the id of the Payable")
                 return
             }
-            let payable = try await tikiSdk.trail.payable.get(
+            let payable = try await tiki.trail.payable.get(
                 id: id
             )
             if(payable != nil){
@@ -65,7 +68,7 @@ public class Payable{
                 call.reject("Please provide licenseId, amount and type in plugin call")
                 return
             }
-            let payable = try await tikiSdk.trail.payable.all(
+            let payable = try await tiki.trail.payable.all(
                 licenseId: licenseId
             )
             call.resolve(["payables": payable.map{p in Payable.toJS(p)}])

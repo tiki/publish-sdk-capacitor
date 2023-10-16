@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F98D68224C9AAE500613A4C /* TikiSdk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F98D68124C9AAE400613A4C /* TikiSdk.swift */; };
+		2F98D68224C9AAE500613A4C /* TikiSdkWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F98D68124C9AAE400613A4C /* TikiSdkWrapper.swift */; };
 		50ADFF92201F53D600D50D53 /* Plugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50ADFF88201F53D600D50D53 /* Plugin.framework */; };
 		50ADFF97201F53D600D50D53 /* TikiSdkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ADFF96201F53D600D50D53 /* TikiSdkTests.swift */; };
 		50ADFF99201F53D600D50D53 /* TikiSdkPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 50ADFF8B201F53D600D50D53 /* TikiSdkPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -36,7 +36,7 @@
 /* Begin PBXFileReference section */
 		00002C3A07573D4F03C9055B /* Pods-Plugin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin.debug.xcconfig"; path = "Target Support Files/Pods-Plugin/Pods-Plugin.debug.xcconfig"; sourceTree = "<group>"; };
 		0954F2BD9851DE383F0A67FB /* Pods-PluginTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PluginTests.release.xcconfig"; path = "Target Support Files/Pods-PluginTests/Pods-PluginTests.release.xcconfig"; sourceTree = "<group>"; };
-		2F98D68124C9AAE400613A4C /* TikiSdk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TikiSdk.swift; sourceTree = "<group>"; };
+		2F98D68124C9AAE400613A4C /* TikiSdkWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TikiSdkWrapper.swift; sourceTree = "<group>"; };
 		4BD5BCBAAE268084A076F00B /* Pods_Plugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50ADFF88201F53D600D50D53 /* Plugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Plugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50ADFF8B201F53D600D50D53 /* TikiSdkPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TikiSdkPlugin.h; sourceTree = "<group>"; };
@@ -86,7 +86,6 @@
 				8C07084505A180376476CDFD /* Pods-PluginTests.debug.xcconfig */,
 				0954F2BD9851DE383F0A67FB /* Pods-PluginTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -119,7 +118,7 @@
 				8CF968D82A9E088500711867 /* License.swift */,
 				8CF968DA2A9E089300711867 /* Idp.swift */,
 				8CF968D62A9E087900711867 /* Title.swift */,
-				2F98D68124C9AAE400613A4C /* TikiSdk.swift */,
+				2F98D68124C9AAE400613A4C /* TikiSdkWrapper.swift */,
 				50ADFF8B201F53D600D50D53 /* TikiSdkPlugin.h */,
 				50ADFFA72020EE4F00D50D53 /* TikiSdkPlugin.m */,
 				50ADFF8C201F53D600D50D53 /* Info.plist */,
@@ -267,12 +266,18 @@
 				"${PODS_ROOT}/Target Support Files/Pods-PluginTests/Pods-PluginTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Capacitor/Capacitor.framework",
 				"${BUILT_PRODUCTS_DIR}/CapacitorCordova/Cordova.framework",
-				"${BUILT_PRODUCTS_DIR}/TikiSdk/TikiSdk.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/TikiSdk/App.framework/App",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/TikiSdk/Flutter.framework/Flutter",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/TikiSdk/flutter_secure_storage.framework/flutter_secure_storage",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/TikiSdk/sqlite3_flutter_libs.framework/sqlite3_flutter_libs",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/TikiSdk/sqlite3.framework/sqlite3",
+				"${BUILT_PRODUCTS_DIR}/TikiSdkDebug/TikiSdk.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/TikiSdkDebug/App.framework/App",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/TikiSdkDebug/Flutter.framework/Flutter",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/TikiSdkDebug/flutter_secure_storage.framework/flutter_secure_storage",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/TikiSdkDebug/sqlite3_flutter_libs.framework/sqlite3_flutter_libs",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/TikiSdkDebug/sqlite3.framework/sqlite3",
+				"${BUILT_PRODUCTS_DIR}/TikiSdkRelease/TikiSdk.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/TikiSdkRelease/App.framework/App",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/TikiSdkRelease/Flutter.framework/Flutter",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/TikiSdkRelease/flutter_secure_storage.framework/flutter_secure_storage",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/TikiSdkRelease/sqlite3_flutter_libs.framework/sqlite3_flutter_libs",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/TikiSdkRelease/sqlite3.framework/sqlite3",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -345,7 +350,7 @@
 				8CF968DB2A9E089300711867 /* Idp.swift in Sources */,
 				50E1A94820377CB70090CE1A /* TikiSdkPlugin.swift in Sources */,
 				8CF968DF2A9E08BA00711867 /* Receipt.swift in Sources */,
-				2F98D68224C9AAE500613A4C /* TikiSdk.swift in Sources */,
+				2F98D68224C9AAE500613A4C /* TikiSdkWrapper.swift in Sources */,
 				8CF968D52A9D1D5A00711867 /* Trail.swift in Sources */,
 				50ADFFA82020EE4F00D50D53 /* TikiSdkPlugin.m in Sources */,
 				8CF968DD2A9E08B200711867 /* Payable.swift in Sources */,

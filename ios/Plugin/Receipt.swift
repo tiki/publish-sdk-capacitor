@@ -8,8 +8,11 @@ import Capacitor
 import TikiSdk
 
 public class Receipt{
+    private var tiki: TikiSdk
     
-    public var tikiSdk = TikiSdk.config()
+    init(tiki: TikiSdk) {
+        self.tiki = tiki
+    }
     
     @objc func create(_ call: CAPPluginCall) async {
         do{
@@ -21,7 +24,7 @@ public class Receipt{
             let description = call.getString("description")
             let reference = call.getString("reference")
 
-            let receipt = try await tikiSdk.trail.receipt.create(
+            let receipt = try await tiki.trail.receipt.create(
                 payableId: payableId,
                 amount: amount,
                 description: description,
@@ -44,7 +47,7 @@ public class Receipt{
                 call.reject("Please provide the id of the Receipt")
                 return
             }
-            let receipt = try await tikiSdk.trail.receipt.get(
+            let receipt = try await tiki.trail.receipt.get(
                 id: id
             )
             if(receipt != nil){
@@ -63,7 +66,7 @@ public class Receipt{
                 call.reject("Please provide payableId, amount and type in plugin call")
                 return
             }
-            let receipt = try await tikiSdk.trail.receipt.all(
+            let receipt = try await tiki.trail.receipt.all(
                 payableId: payableId
             )
             call.resolve(["receipts": receipt.map{p in Receipt.toJS(p)}])

@@ -6,11 +6,16 @@ def capacitor_pods
   pod 'CapacitorCordova', :path => '../node_modules/@capacitor/ios'
 end
 
+def tiki_sdk
+  use_frameworks!
+  pod 'TikiSdkDebug', '2.1.10', :configurations => 'Debug'
+  pod 'TikiSdkRelease', '2.1.10', :configurations => 'Release'
+end
+
 target 'Plugin' do
   capacitor_pods
+  tiki_sdk
   use_frameworks!
-  
-  pod 'TikiSdk', "~> 2.1.7"
 end
 
 target 'PluginTests' do

@@ -40,7 +40,9 @@ target 'Plugin' do
   capacitor_pods
   use_frameworks! # Add this
   
-  pod 'TikiSdk' # Add this
+  pod 'TikiSdkRelease', '2.1.10', :configurations => 'Release' # Add this
+  pod 'TikiSdkDebug', '2.1.10', :configurations => 'Debug' # Add this
+  
 end
 
 target 'PluginTests' do

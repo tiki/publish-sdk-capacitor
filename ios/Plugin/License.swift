@@ -8,8 +8,11 @@ import Capacitor
 import TikiSdk
 
 public class License{
+    private var tiki: TikiSdk
     
-    public var tikiSdk = TikiSdk.config()
+    init(tiki: TikiSdk) {
+        self.tiki = tiki
+    }
     
     @objc public func create(_ call: CAPPluginCall) async {
         do{
@@ -32,7 +35,7 @@ public class License{
             } ?? []
             let expiry = call.getInt("expiry") != nil ? Date(milliseconds: Int64(exactly: call.getInt("expiry")!)!) : nil
             let description = call.getString("description")
-            let license = try await tikiSdk.trail.license.create(
+            let license = try await tiki.trail.license.create(
                 titleId: titleId,
                 uses: licenseUses,
                 terms: terms,
@@ -56,7 +59,7 @@ public class License{
                 call.reject("Please provide the id of the License")
                 return
             }
-            let license = try await tikiSdk.trail.license.get(
+            let license = try await tiki.trail.license.get(
                 id: id
             )
             if(license != nil){
@@ -75,7 +78,7 @@ public class License{
                 call.reject("Please provide titleId, amount and type in plugin call")
                 return
             }
-            let license = try await tikiSdk.trail.license.all(
+            let license = try await tiki.trail.license.all(
                 titleId: titleId
             )
             call.resolve(["licenses": license.map{p in License.toJS(p)}])
