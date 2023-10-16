@@ -15,6 +15,6 @@ Pod::Spec.new do |s|
   s.dependency 'Capacitor'
   s.swift_version = '5.1'
 
-  s.dependency 'TikiSdkDebug', '2.1.9', :configurations => 'Debug'
-  s.dependency 'TikiSdkRelease', '2.1.9', :configurations => 'Release'
+  s.dependency 'TikiSdkDebug', '2.1.10', :configurations => 'Debug'
+  s.dependency 'TikiSdkRelease', '2.1.10', :configurations => 'Release'
 end
