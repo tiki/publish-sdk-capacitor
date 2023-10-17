@@ -1,6 +1,6 @@
 {
   "name": "@mytiki/tiki-sdk-capacitor",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Add TIKI's zero-party data monetization infrastructure to you CapacitorJS app",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
